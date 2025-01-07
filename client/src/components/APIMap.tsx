@@ -4,9 +4,11 @@ import "./APIMap.css";
 import L from "leaflet";
 
 function Mapp() {
-  const initialPosition = [51.505, -0.09];
+const initialPosition: [number, number] = [51.505, -0.09];
 
-  const [markerPosition, setMarkerPosition] = useState(initialPosition);
+ const [markerPosition, setMarkerPosition] =
+   useState<[number, number]>(initialPosition);
+
 
   const handleMarkerDrag = (event: L.DragEndEvent) => {
     const newPosition = event.target.getLatLng();
@@ -14,14 +16,14 @@ function Mapp() {
   };
 
   const sendLocation = () => {
-    // console.log("La position du marqueur est :", markerPosition);
+
   };
 
   return (
     <section className="internet-map">
       <div className="maps">
         <MapContainer
-          center={initialPosition}
+          center={L.latLng(initialPosition)} 
           zoom={18}
           style={{ width: "100%", height: "500px" }}
         >
